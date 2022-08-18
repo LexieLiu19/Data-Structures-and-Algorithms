@@ -1,8 +1,8 @@
-package com.leetcode.LinkedLists;
+package com.datastructure.LinkedLists;
 
 import java.util.NoSuchElementException;
 
-public class LinkedList {
+public class MyLinkedList {
 
     private class Node {
         private int value;
@@ -15,6 +15,7 @@ public class LinkedList {
 
     private Node first;
     private Node last;
+    private int size;
 
     public void addLast(int item) {
         var node = new Node(item);
@@ -24,6 +25,7 @@ public class LinkedList {
             last.next = node;
             last = node;
         }
+        size++;
     }
 
 
@@ -35,6 +37,7 @@ public class LinkedList {
             node.next = first;
             first = node;
         }
+        size++;
     }
 
     public int indexOf(int item) {
@@ -53,8 +56,6 @@ public class LinkedList {
     }
 
     public boolean contains(int targetItem) {
-
-
         return indexOf(targetItem) != -1;
     }
 
@@ -66,12 +67,13 @@ public class LinkedList {
 
         if (first == last) {
             first = last = null;
+            size = 0;
             return;
         }
         var second = first.next;
         first.next = null;
         first = second;
-
+        size--;
     }
 
     public void removeLast() {
@@ -81,12 +83,67 @@ public class LinkedList {
 
         if (first == last) {
             first = last = null;
+            size = 0;
             return;
         }
 
-        var previous = getPrevious(last);
-        last = previous;
+        last = getPrevious(last);
         last.next = null;
+        size--;
+
+    }
+
+    public int size() {
+        return size;
+    }
+
+    public int[] toArray() {
+        int[] array = new int[size];
+        var cur = first;
+        int index = 0;
+        while (cur != null) {
+            array[index] = cur.value;
+            index++;
+            cur = cur.next;
+        }
+        return array;
+    }
+
+
+    public void reverse() {
+        if (first == null || last == null) return;
+
+
+        var prev = first;
+        var cur = first.next;
+        while (cur != null) {
+            var next = cur.next;
+            cur.next = prev;
+            prev = cur;
+            cur = next;
+        }
+
+
+        last = first;
+        last.next = null;
+        first = prev;
+    }
+
+    public int getKthFromTheEnd(int k) {
+        if (first == null || k > size) {
+            throw new IllegalArgumentException();
+        }
+        ;
+        var fast = first;
+        var slow = first;
+        for (int i = 0; i < k - 1; i++) {
+            fast = fast.next;
+        }
+        while (fast != last) {
+            fast = fast.next;
+            slow = slow.next;
+        }
+        return slow.value;
 
     }
 
@@ -103,4 +160,6 @@ public class LinkedList {
     private boolean isEmpty() {
         return first == null;
     }
+
+
 }

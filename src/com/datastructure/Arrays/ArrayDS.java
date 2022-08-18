@@ -1,4 +1,4 @@
-package com.leetcode.Arrays;
+package com.datastructure.Arrays;
 
 public class ArrayDS {
 

@@ -1,4 +1,4 @@
-package com.leetcode.Arrays;
+package com.datastructure.Arrays;
 
 import java.util.ArrayList;
 
@@ -20,7 +20,7 @@ public class DynamicArrayWithArrayList {
         list.indexOf(1);
         list.lastIndexOf(1);
 
-        list.toArray();
+        list.toArray();// convert the ArrayList to normal array
 
 
     }
