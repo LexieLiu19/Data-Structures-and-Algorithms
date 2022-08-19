@@ -14,7 +14,8 @@ public class Expression {
             if (isLeftBrackets(ch)) stack.push(ch);
             if (isRightBrackets(ch)) {
                 if (stack.empty()) return false;
-                stack.pop();
+                var top = stack.pop();
+                if (!isMatched(top, ch)) return false;
             }
         }
 
@@ -29,4 +30,7 @@ public class Expression {
         return rightBrackets.contains(ch);
     }
 
+    private boolean isMatched(char left, char right) {
+        return leftBrackets.indexOf(left) == rightBrackets.indexOf(right);
+    }
 }
