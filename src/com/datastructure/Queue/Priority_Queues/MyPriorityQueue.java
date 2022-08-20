@@ -3,7 +3,7 @@ package com.datastructure.Queue.Priority_Queues;
 import java.util.Arrays;
 
 
-// todo: remove() & print methods need to be improve;
+// todo: remove() & print methods need to be improved;
 public class MyPriorityQueue {
 
     private int[] items;
