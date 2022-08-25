@@ -9,3 +9,4 @@ for [Youtube Channel Programming with Mosh](https://www.youtube.com/watch?v=BBpA
 4. [Stack](https://github.com/LexieLiu19/Data-Structures-and-Algorithms/tree/main/src/com/datastructure/Stacks)
 5. [HashTable](https://github.com/LexieLiu19/Data-Structures-and-Algorithms/tree/main/src/com/datastructure/HashTables)
 6. [Set](https://github.com/LexieLiu19/Data-Structures-and-Algorithms/tree/main/src/com/datastructure/Set)
+7. [Tree](https://github.com/LexieLiu19/Data-Structures-and-Algorithms/tree/main/src/com/datastructure/Tree)
