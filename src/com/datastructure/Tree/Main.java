@@ -3,6 +3,7 @@ package com.datastructure.Tree;
 public class Main {
     public static void main(String[] args) {
         Tree t = new Tree();
+        Tree t2 = new Tree();
         t.insert(8);
         t.insert(32);
         t.insert(10);
@@ -17,6 +18,11 @@ public class Main {
         System.out.println("Mini value is: " + t.findMin());
 
         System.out.println("Find min value in BST: " + t.findMinBST());
+
+
+        System.out.println("Tree1 equals tree2? " + t.isEqual(t2));
+
+
     }
 
 }

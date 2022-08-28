@@ -74,6 +74,18 @@ public class Tree {
         traversalPreOrder(root);
     }
 
+
+    public boolean isEqual(Tree otherTree) {
+        return isEqual(root, otherTree.root);
+
+    }
+
+    private boolean isEqual(Node r1, Node r2) {
+        if (r1 == null || r2 == null) return r1 == r2;
+        return (r1.value == r2.value) && isEqual(r1.left, r2.left) && isEqual(r1.right, r2.right);
+
+    }
+
     private void traversalPreOrder(Node root) {
         if (root == null) return;
         System.out.println(root.value);
@@ -93,6 +105,11 @@ public class Tree {
         return findMin(root);
     }
 
+    public int findMinBST() {
+        return findMinBST(root);
+    }
+
+
     private int findMin(Node root) {
         if (root == null) {
             return Integer.MAX_VALUE;
@@ -103,13 +120,6 @@ public class Tree {
         int right = findMin(root.right);
 
         return min(min(left, right), res);
-
-
-    }
-
-
-    public int findMinBST() {
-        return findMinBST(root);
     }
 
     private int findMinBST(Node root) {
