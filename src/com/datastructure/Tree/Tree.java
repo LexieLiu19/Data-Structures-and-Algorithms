@@ -1,5 +1,9 @@
 package com.datastructure.Tree;
 
+
+import static java.lang.Math.max;
+import static java.lang.Math.min;
+
 public class Tree {
 
     private class Node {
@@ -79,6 +83,40 @@ public class Tree {
 
     public void traversalPostOrder() {
         traversalPostOrder(root);
+    }
+
+    public int height() {
+        return height(root);
+    }
+
+    public int findMin() {
+        return findMin(root);
+    }
+
+    private int findMin(Node root) {
+        if (root == null) {
+            return Integer.MAX_VALUE;
+        }
+
+        int res = root.value;
+        int left = findMin(root.left);
+        int right = findMin(root.right);
+
+        return min(min(left, right), res);
+
+
+    }
+
+    private boolean isLeaf(Node node) {
+        return (node.left == null && node.right == null);
+    }
+
+    private int height(Node root) {
+        if (root == null) return -1;
+        if (isLeaf(root)) return 0;
+
+        return 1 + max(height(root.left), height(root.right));
+
     }
 
     private void traversalPostOrder(Node root) {

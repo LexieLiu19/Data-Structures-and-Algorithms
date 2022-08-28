@@ -10,9 +10,11 @@ public class Main {
         t.insert(12);
         System.out.println(t.find(100));
         System.out.println(t.find(10));
-
+        System.out.println("Traversal Pre-Order: ");
         t.traversalPreOrder();
-        t.traversalPostOrder();
+
+        System.out.println("Tree Height is: " + t.height());
+        System.out.println("Mini value is: " + t.findMin());
 
     }
 
