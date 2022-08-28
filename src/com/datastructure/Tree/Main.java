@@ -22,6 +22,8 @@ public class Main {
 
         System.out.println("Tree1 equals tree2? " + t.isEqual(t2));
 
+        System.out.println(t.isValidBST());
+
 
     }
 

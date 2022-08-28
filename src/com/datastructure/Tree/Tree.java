@@ -86,13 +86,6 @@ public class Tree {
 
     }
 
-    private void traversalPreOrder(Node root) {
-        if (root == null) return;
-        System.out.println(root.value);
-        traversalPreOrder(root.left);
-        traversalPreOrder(root.right);
-    }
-
     public void traversalPostOrder() {
         traversalPostOrder(root);
     }
@@ -109,6 +102,30 @@ public class Tree {
         return findMinBST(root);
     }
 
+    //Leetcode 98
+    public boolean isValidBST() {
+        if (root == null) return true;
+        return isValidBST(root, null, null);
+    }
+
+
+    private boolean isValidBST(Node root, Integer min, Integer max) {
+        if (root == null) return true;
+        if ((min != null && root.value <= min) || (max != null && root.value >= max)) {
+            return false;
+        }
+
+
+        return isValidBST(root.left, min, root.value) && isValidBST(root.right, root.value, max);
+
+    }
+
+    private void traversalPreOrder(Node root) {
+        if (root == null) return;
+        System.out.println(root.value);
+        traversalPreOrder(root.left);
+        traversalPreOrder(root.right);
+    }
 
     private int findMin(Node root) {
         if (root == null) {
