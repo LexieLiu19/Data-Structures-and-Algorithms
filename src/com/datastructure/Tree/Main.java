@@ -16,6 +16,7 @@ public class Main {
         System.out.println("Tree Height is: " + t.height());
         System.out.println("Mini value is: " + t.findMin());
 
+        System.out.println("Find min value in BST: " + t.findMinBST());
     }
 
 }

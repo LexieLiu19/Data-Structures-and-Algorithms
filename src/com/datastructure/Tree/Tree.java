@@ -26,12 +26,12 @@ public class Tree {
 
     public void insert(int value) {
 
-        var node = new Node(value);
+        Node node = new Node(value);
         if (root == null) {
             root = node;
             return;
         }
-        var current = root;
+        Node current = root;
 
         while (true) {
             if (value < current.value) {
@@ -57,7 +57,7 @@ public class Tree {
     public boolean find(int value) {
         if (root == null) return false;
 
-        var current = root;
+        Node current = root;
         while (current != null) {
             if (current.value > value) {
                 current = current.left;
@@ -105,6 +105,20 @@ public class Tree {
         return min(min(left, right), res);
 
 
+    }
+
+
+    public int findMinBST() {
+        return findMinBST(root);
+    }
+
+    private int findMinBST(Node root) {
+        if (root == null) return Integer.MAX_VALUE;
+        Node current = root;
+        while (current.left != null) {
+            current = current.left;
+        }
+        return current.value;
     }
 
     private boolean isLeaf(Node node) {
