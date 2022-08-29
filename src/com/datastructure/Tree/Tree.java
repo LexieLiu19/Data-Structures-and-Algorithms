@@ -1,28 +1,15 @@
 package com.datastructure.Tree;
 
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 import static java.lang.Math.max;
 import static java.lang.Math.min;
 
 public class Tree {
 
-    private class Node {
-        private int value;
-        private Node left;
-        private Node right;
-
-        public Node(int value) {
-            this.value = value;
-        }
-
-        @Override
-        public String toString() {
-            return "Node = " + value;
-        }
-    }
-
     public Node root;
-
 
     public void insert(int value) {
 
@@ -53,7 +40,6 @@ public class Tree {
 
     }
 
-
     public boolean find(int value) {
         if (root == null) return false;
 
@@ -73,7 +59,6 @@ public class Tree {
     public void traversalPreOrder() {
         traversalPreOrder(root);
     }
-
 
     public boolean isEqual(Tree otherTree) {
         return isEqual(root, otherTree.root);
@@ -102,12 +87,35 @@ public class Tree {
         return findMinBST(root);
     }
 
+    //Leetcode 102
+    public void LevelOrderTraversal() {
+        if (root == null) return;
+        LevelOrderTraversal(root);
+
+    }
+
+    private void LevelOrderTraversal(Node root) {
+
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+        while (!q.isEmpty()) {
+            Node temp = q.remove();
+            System.out.println(temp.value);
+
+            if (temp.left != null) {
+                q.add(temp.left);
+            }
+            if (temp.right != null) {
+                q.add(temp.right);
+            }
+        }
+    }
+
     //Leetcode 98
     public boolean isValidBST() {
         if (root == null) return true;
         return isValidBST(root, null, null);
     }
-
 
     private boolean isValidBST(Node root, Integer min, Integer max) {
         if (root == null) return true;
@@ -115,9 +123,7 @@ public class Tree {
             return false;
         }
 
-
         return isValidBST(root.left, min, root.value) && isValidBST(root.right, root.value, max);
-
     }
 
     private void traversalPreOrder(Node root) {
@@ -165,5 +171,20 @@ public class Tree {
         traversalPostOrder(root.left);
         System.out.println(root.value);
         traversalPostOrder(root.right);
+    }
+
+    private class Node {
+        private int value;
+        private Node left;
+        private Node right;
+
+        public Node(int value) {
+            this.value = value;
+        }
+
+        @Override
+        public String toString() {
+            return "Node = " + value;
+        }
     }
 }
