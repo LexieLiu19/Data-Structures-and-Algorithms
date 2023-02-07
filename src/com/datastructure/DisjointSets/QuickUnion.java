@@ -14,7 +14,7 @@ public class QuickUnion implements DisjointSets {
 
 
     public int findRoot(int p) {
-        while (parent[p] >= 0) {
+        while (p != parent[p]) {
             p = parent[p];
         }
 
@@ -32,4 +32,6 @@ public class QuickUnion implements DisjointSets {
     public boolean isConnected(int p, int q) {
         return findRoot(p) == findRoot(q);
     }
+
+
 }
