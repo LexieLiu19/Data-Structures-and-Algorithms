@@ -14,6 +14,9 @@ public class QuickUnion implements DisjointSets {
 
 
     public int findRoot(int p) {
+
+        if (p < 0 || p >= parent.length)
+            throw new IllegalArgumentException("Index is out of bound");
         while (p != parent[p]) {
             p = parent[p];
         }
@@ -32,6 +35,5 @@ public class QuickUnion implements DisjointSets {
     public boolean isConnected(int p, int q) {
         return findRoot(p) == findRoot(q);
     }
-
 
 }
